@@ -19,21 +19,21 @@
                     <input type="date" name="expiration_date" class="form-control" required>
                     <label class="form-label">Status</label>
                     <select class="form-select form-select-sm" name="status" required>
-                        <option selected>Select status</option>
+                        <option value="" selected>Select status</option>
                         @foreach ($taskstatus as $status)
                             <option value="{{ $status->id }}">{{ $status->description }}</option>
                         @endforeach
                     </select>
                     <label class="form-label">Assigned to</label>
                     <select class="form-select form-select-sm" name="assigned_to" required>
-                        <option selected>Select user</option>
+                        <option value="" selected>Select user</option>
                         @foreach ($users as $user)
                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                         @endforeach
                     </select>
                     <input type="text" name="project" value="{{ $project->id }}" class="form-control" hidden>
                     <br>
-                    <a href="{{ route('tasks.index', $project->id) }}" class="btn btn-danger">Cancel <i class="fas fa-ban"></i></a>
+                    <a href="{{ route('tasks.tasks', $project->id) }}" class="btn btn-danger">Cancel <i class="fas fa-ban"></i></a>
                     <button class="btn btn-primary">Save <i class="fas fa-save"></i></button>
                 </form><br>
             </div>

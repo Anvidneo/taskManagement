@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Projects;
 use App\Models\Tasks;
-use App\Models\TaskStatuses;
-use App\Models\User;
+use App\Models\TaskStatus;
+use App\Models\TaskComments;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller
@@ -14,11 +15,13 @@ class TasksController extends Controller
     protected $projects;
     protected $tasks;
     protected $taskstatus;
+    protected $taskcomments;
     public function __construct(){
         $this->users = new User();
         $this->projects = new Projects();
         $this->tasks = new Tasks();
-        $this->taskstatus = new TaskStatuses();
+        $this->taskstatus = new TaskStatus();
+        $this->taskcomments = new TaskComments();
     }
 
     public function tasks(int $id){
@@ -27,14 +30,38 @@ class TasksController extends Controller
         return view('tasks.tasks', ['tasks' => $tasks, 'project' => $project]);
     }
 
+    public function task(int $id){
+        $task = $this->tasks->findTasksById($id);
+        $project = $this->projects->findProject($task->project);
+        $user = $this->users->getUser($task->assigned_to);
+        $taskstatus = $this->taskstatus->findStatus($task->status);
+        $taskcomments = $this->taskcomments->allCommentsByTask($task->id);
+        if ($task->status == env('IDSTATUS_ENCURSO')) {
+            $status = 'primary';
+        } else if ($task->status == env('IDSTATUS_FINALIZADO')) {
+            $status = 'success';
+        } else {
+            $status = 'secondary';
+        }
+                        
+        return view('tasks.task', [
+            'task' => $task, 
+            'project' => $project, 
+            'user' => $user, 
+            'taskstatus' => $taskstatus, 
+            'taskcomments' => $taskcomments, 
+            'status' => $status
+        ]);
+    }
+
     public function create(int $id){
         $users = $this->users->allUsers();
         $project = $this->projects->findProject($id);
-        $taskstatus = $this->taskstatus->allTaskStatuses();
+        $taskstatus = $this->taskstatus->allTaskStatus();
         return view('tasks.create', ['users' => $users, 'project' => $project, 'taskstatus' => $taskstatus]);
     }
 
-    public function store(Request $request){   
+    public function store(Request $request){
         $task = new Tasks();
         $task->tittle = $request->post('tittle');
         $task->description = $request->post('description');
@@ -51,7 +78,7 @@ class TasksController extends Controller
         $task = Tasks::find($id);
         $users = $this->users->allUsers();
         $project = $this->projects->findProject($task->project);
-        $taskstatus = $this->taskstatus->allTaskStatuses();
+        $taskstatus = $this->taskstatus->allTaskStatus();
         return view('tasks.edit', ['users' => $users, 'task' => $task, 'project' => $project, 'taskstatus' => $taskstatus]);
     }
 

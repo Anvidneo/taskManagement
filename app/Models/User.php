@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Hash;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class User extends Authenticatable
 {
@@ -35,10 +33,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
-    public function project(): HasMany{
-        return $this->hasMany(Projects::class);
-    }
 
     public function validateCredential($request){
         $validate = true;
@@ -68,4 +62,22 @@ class User extends Authenticatable
 
         return $users;
     } 
+
+    public function getUser(int $id){
+        $user =  User::find($id);
+
+        return $user;
+    } 
+
+    public function task(): HasMany{
+        return $this->hasMany(Tasks::class);
+    }
+    
+    public function project(): HasMany{
+        return $this->hasMany(Projects::class);
+    }
+
+    public function comment(): HasMany{
+        return $this->hasMany(TaskComments::class);
+    }
 }

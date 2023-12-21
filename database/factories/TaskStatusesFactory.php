@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TaskStatusesFactory extends Factory
+class TaskStatusFactory extends Factory
 {
     /**
      * Define the model's default state.

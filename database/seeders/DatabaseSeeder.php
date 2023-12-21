@@ -13,12 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        \App\Models\TaskStatuses::factory()->create([
-            'description' => 'En proceso',
-        ]);
-        \App\Models\TaskStatuses::factory()->create([
-            'description' => 'Completada',
-        ]);
+        $this->call(status::class);
     }
 }

@@ -27,10 +27,10 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Tittle</th>
-                                <th>Description</th>
                                 <th>Expiration Date</th>
                                 <th>Assigned To</th>
                                 <th>Status</th>
+                                <th>Detail</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -40,10 +40,14 @@
                                 <tr>
                                     <td>{{ $task->id }}</td>
                                     <td>{{ $task->tittle }}</td>
-                                    <td>{{ $task->description }}</td>
                                     <td>{{ $task->expiration_date }}</td>
                                     <td>{{ $task->name }}</td>
-                                    <td>{{ $task->task_statuses }}</td>
+                                    <td>{{ $task->task_status }}</td>
+                                    <td>
+                                        <a href="{{ route('tasks.task', $task->id) }}" class="btn btn-primary">
+                                            Detail <i class="fas fa-eye"></i>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning">
                                             Edit <i class="fas fa-user-edit"></i>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TaskStatuses;
+use App\Models\TaskStatus;
 use Illuminate\Http\Request;
 
-class TaskStatusesController extends Controller
+class TaskStatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TaskStatusesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TaskStatuses  $taskStatus
+     * @param  \App\Models\TaskStatus  $taskStatus
      * @return \Illuminate\Http\Response
      */
-    public function show(TaskStatuses $taskStatus)
+    public function show(TaskStatus $taskStatus)
     {
         //
     }
@@ -52,10 +52,10 @@ class TaskStatusesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TaskStatuses  $taskStatus
+     * @param  \App\Models\TaskStatus  $taskStatus
      * @return \Illuminate\Http\Response
      */
-    public function edit(TaskStatuses $taskStatus)
+    public function edit(TaskStatus $taskStatus)
     {
         //
     }
@@ -64,10 +64,10 @@ class TaskStatusesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TaskStatuses  $taskStatus
+     * @param  \App\Models\TaskStatus  $taskStatus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TaskStatuses $taskStatus)
+    public function update(Request $request, TaskStatus $taskStatus)
     {
         //
     }
@@ -75,10 +75,10 @@ class TaskStatusesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TaskStatuses  $taskStatus
+     * @param  \App\Models\TaskStatus  $taskStatus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TaskStatuses $taskStatus)
+    public function destroy(TaskStatus $taskStatus)
     {
         //
     }

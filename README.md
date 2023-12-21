@@ -1,64 +1,75 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 📃 Documentación 📃
+En este apartado se encontrara una breve explicación de la aplicación, como configurar y levantar la misma y su modelo y diccionar de datos.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 🕵️‍♂️ Sobre la prueba 🕵️‍♂️
 
-## About Laravel
+La aplicación fue contruida en Laravel utilizando sus funcionalidades de autenticación y vistas (Blade) junto con un modelo MVC para facilitar el desarrollo por su agilidad al momento de la creacipon de los diferente modulos.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📘 Explicación breve de la aplicación 📘
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+El usuario podra registrarse y loguearse, este podra crear royectos los cuales contienen (Titulo, descripcion). UN proyecot puede contener varias tareas, las cuales tambien pueden ser gestionadas (Lo que es un CRUD) ademas de que podra comentar las tareas con observaciones sobre la misma al momento de visualizar el detalle de la tarea.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🔧 Configuraciones a tener en cuenta 🔧
 
-## Learning Laravel
+Debe seguir las siguientes configuraciones para un correcto levantamiento de la aplicación.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Bajar el proyecto del repositorio **[taskManagement](https://github.com/Anvidneo/taskManagement)**.
+    - Utilizar el comando git clone "url" para bajar el proyecto
+- Pegar en el `.env` el contenido del `.env.example`
+- Tener un entorno MySql en ejecución (Se puede usar Xampp, Wampp, etc)
+- Crear una base de datos llamada  `crud`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🔨 Levantar el proyecto 🔨
 
-## Laravel Sponsors
+Siga las siguientes intrucciones para levantar y correr la aplicación
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Correr el siguiente comando para que se ejecuten las migraciones y se siembren los datos `php artisan migrate --seed`
+- Una vez ejecutaod el paso anterior ya solo es levantar el proyecto con el siguiente comando  `php artisan serve`
 
-### Premium Partners
+Con los pasos anteriores el poyecto ya estaria corriendo localmente por la siguiente url **[taskManagement](http://localhost:8000/)**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### 💾 Modelo y diccionario de datos 💾
+A continuacion encontrara el modelo y el diccionario de datos.
 
-## Contributing
+- El suguiente es el diargama de modelo de datos de la base de datos 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+![Modelo de datos](image.png)
 
-## Code of Conduct
+- El siguiente es el diciconario de datos
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+| TABLA | COLUMNA_NOMBRE | COLUMNA_DEFECTO | COLUMNA_NULO | COLUMNA_TIPO_DATO | COLUMNA_LONGITUD | COLUMNA_DESCRIPCION |
+|--------------|-----------|------------|------------|------------|------------|------------|
+tabla|columna_nombre|columna_defecto|columna_nulo|columna_tipo_dato|columna_longitud|columna_descripcion
+projects|id|[NULL]|NO|bigint|20|
+tasks|id|[NULL]|NO|bigint|20|
+task_comments|id|[NULL]|NO|bigint|20|
+task_status|id|[NULL]|NO|bigint|20|
+users|id|[NULL]|NO|bigint|20|
+projects|tittle|[NULL]|NO|varchar|255|
+tasks|tittle|[NULL]|NO|varchar|255|
+task_comments|comment|[NULL]|NO|varchar|255|
+task_status|description|[NULL]|NO|varchar|255|
+users|name|[NULL]|NO|varchar|255|
+projects|description|[NULL]|NO|varchar|255|
+tasks|description|[NULL]|NO|varchar|255|
+task_comments|task|[NULL]|NO|bigint|20|
+task_status|created_at|NULL|YES|timestamp|[NULL]|
+users|email|[NULL]|NO|varchar|255|
+projects|init_date|[NULL]|NO|date|[NULL]|
+tasks|expiration_date|[NULL]|NO|date|[NULL]|
+task_comments|creator|[NULL]|NO|bigint|20|
+task_status|updated_at|NULL|YES|timestamp|[NULL]|
+users|password|[NULL]|NO|varchar|255|
+projects|creator|[NULL]|NO|bigint|20|
+tasks|status|[NULL]|NO|bigint|20|
+task_comments|created_at|NULL|YES|timestamp|[NULL]|
+users|remember_token|NULL|YES|varchar|100|
+projects|created_at|NULL|YES|timestamp|[NULL]|
+tasks|assigned_to|[NULL]|NO|bigint|20|
+task_comments|updated_at|NULL|YES|timestamp|[NULL]|
+users|created_at|NULL|YES|timestamp|[NULL]|
+projects|updated_at|NULL|YES|timestamp|[NULL]|
+tasks|project|[NULL]|NO|bigint|20|
+users|updated_at|NULL|YES|timestamp|[NULL]|
+tasks|created_at|NULL|YES|timestamp|[NULL]|
+tasks|updated_at|NULL|YES|timestamp|[NULL]|	

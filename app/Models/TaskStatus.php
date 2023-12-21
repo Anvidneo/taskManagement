@@ -6,12 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class TaskStatuses extends Model
+class TaskStatus extends Model
 {
+    
     use HasFactory;
+    
+    protected $table = 'task_status';
 
-    public function allTaskStatuses(){
-        $taskstatus = TaskStatuses::all();
+    public function allTaskStatus(){
+        $taskstatus = TaskStatus::all();
+
+        return $taskstatus;
+    } 
+
+    public function findStatus(int $id){
+        $taskstatus = TaskStatus::find($id);
 
         return $taskstatus;
     } 
